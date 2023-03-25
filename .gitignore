@@ -1,0 +1,9 @@
+coverage
+.env
+node_modules
+dist
+.idea
+__azurite_db_*.json
+__blobstorage__
+__queuestorage__
+init.txt
