@@ -42,4 +42,18 @@ describe('StudentService', () => {
       expect(() => studentService.getCoinsByUserId(student.id)).toThrowError('não possui uma conta válida');
     });
   });
+
+  describe('ao dar uma inscrição premium', () => {
+    it('dar 3 moedas e retornar a nova quantidade de moedas', () => {
+      expect(true).toEqual('not implemented');
+    });
+
+    it('lançar um erro caso o usuário não possua uma conta', () => {
+      expect(true).toEqual('not implemented');
+    });
+
+    it('lançar um erro caso o usuário não possua uma conta válida', () => {
+      expect(true).toEqual('not implemented');
+    });
+  });
 });
