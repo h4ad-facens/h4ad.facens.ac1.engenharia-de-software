@@ -1,3 +1,10 @@
+import { Course } from '../src/models/course';
+import { DataStore } from '../src/data/data.store';
+import { Student } from '../src/models/student';
+import { BasicSubscription } from '../src/models/subscription';
+import { StudentService } from '../src/services/student.service';
+import { isSet } from 'util/types';
+
 describe('CourseService', () => {
   describe('ao comprar um curso com moedas', () => {
     it('deve subtrair as moedas do usuário', () => {
@@ -38,9 +45,33 @@ describe('CourseService', () => {
       expect(true).toEqual('not implemented');
     });
 
+
+
+    /**
+     * @author Enrico Acquaviva
+     */
     it('ao finalizar o 12 curso, se sim, transformar o usuário em premium', () => {
-      expect(true).toEqual('not implemented');
+      const student = new Student('Enrico', BasicSubscription);
+      const curso = new Course('Curso1', null);
+      const curso2 = new Course('Curso2', null);
+      const dataStore = new DataStore();
+      dataStore.students.push(student);
+      dataStore.courses.push(curso);
+      student.setCourse(curso);
+      student.setCourse(curso2);
+      const studentService = new StudentService(dataStore);
+      let cursosEstudante; 
+      let tamanho = 0;
+      let i=0;
+    for (i; i<12;i++){
+        cursosEstudante = student.getCourses(i);
+        if(cursosEstudante != null){
+            tamanho += 1;
+        }
+    } 
+      expect(tamanho).toBe(12);
     });
+    
 
     it('se certificar que o usuário recebeu as 3 moedas', () => {
       expect(true).toEqual('not implemented');

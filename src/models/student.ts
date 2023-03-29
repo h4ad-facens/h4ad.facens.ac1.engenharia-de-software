@@ -29,6 +29,15 @@ export class Student {
 
   //#region Public Methods
 
+  public setCourse(course){
+    this.courses[course];
+  }
+
+  
+  public getCourses(index){
+    return this.courses[index];
+  }
+
   public isValid(): boolean {
     return this.isValidAccount;
   }
@@ -40,6 +49,7 @@ export class Student {
   public setValid(isValid: boolean): void {
     this.isValidAccount = isValid;
   }
+  
 
   //#endregion
 
