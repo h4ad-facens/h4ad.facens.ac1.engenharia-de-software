@@ -21,6 +21,10 @@ export class Lesson {
 
   public readonly id: string = v4();
 
+  public getContent(): string {
+    return this.content;
+  }
+
   //#endregion
 
 }
