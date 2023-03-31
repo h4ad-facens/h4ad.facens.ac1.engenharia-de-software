@@ -1,3 +1,10 @@
+import { Course } from '../src/models/course';
+import { DataStore } from '../src/data/data.store';
+import { Student } from '../src/models/student';
+import { BasicSubscription, PremiumSubscription } from '../src/models/subscription';
+import { StudentService } from '../src/services/student.service';
+import { isSet } from 'util/types';
+
 describe('CourseService', () => {
   describe('ao comprar um curso com moedas', () => {
     it('deve subtrair as moedas do usuário', () => {
@@ -23,8 +30,14 @@ describe('CourseService', () => {
     });
   });
 
+
+   /**
+     * @author Enrico Acquaviva
+     */
   describe('ao listar os cursos da assinatura', () => {
     it('deve retornar cursos de acordo com a assinatura do usuário', () => {
+      
+
       expect(true).toEqual('not implemented');
     });
 
@@ -38,9 +51,30 @@ describe('CourseService', () => {
       expect(true).toEqual('not implemented');
     });
 
+
+
+    /**
+     * @author Enrico Acquaviva
+     */
     it('ao finalizar o 12 curso, se sim, transformar o usuário em premium', () => {
-      expect(true).toEqual('not implemented');
+      const student = new Student('Enrico', BasicSubscription);
+      const dataStore = new DataStore();
+      dataStore.students.push(student);
+      let i=0;
+      for (i; i<12;i++){
+        const curso = new Course(`Curso${i}`, null);
+        dataStore.courses.push(curso);
+        student.setcompletedCourse(curso);
+      } 
+      const studentService = new StudentService(dataStore);
+      
+      let possuiDozeCursos = studentService.verifyTwelveCourses(student.id);
+
+      expect(possuiDozeCursos).toEqual(true);
+      
+      
     });
+    
 
     it('se certificar que o usuário recebeu as 3 moedas', () => {
       expect(true).toEqual('not implemented');

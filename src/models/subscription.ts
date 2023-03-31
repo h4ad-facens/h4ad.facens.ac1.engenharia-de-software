@@ -9,7 +9,7 @@ export class Subscription {
   //#region Constructor
 
   constructor(
-    public readonly type: 'basic' | 'premium',
+    public type: 'basic' | 'premium',
   ) { }
 
   //#endregion

@@ -2,7 +2,7 @@
 
 import { v4 } from 'uuid';
 import { Course } from './course';
-import { Subscription } from './subscription';
+import { PremiumSubscription, Subscription } from './subscription';
 
 //#endregion
 
@@ -25,9 +25,48 @@ export class Student {
   protected coins: number = 0;
   protected isValidAccount: boolean = true;
 
+  public completedCourses: Course[] = [];
+
   //#endregion
 
   //#region Public Methods
+    
+
+    /**
+     * @author Enrico Acquaviva
+     */
+    public setsubscription(subscricao: Subscription){
+      this.subscription = subscricao;
+    }
+
+    /**
+     * @author Enrico Acquaviva
+     */
+    public setcompletedCourse(curso:Course){
+      this.completedCourses.push(curso);
+    }
+    /**
+     * @author Enrico Acquaviva
+     */
+    public getcompletedCourse(){
+      return this.completedCourses;
+    }
+
+  /**
+     * @author Enrico Acquaviva
+     */  
+  public setCourse(course:Course){
+    if(this.subscription == course.subscription || this.subscription == PremiumSubscription){
+        this.courses.push(course);
+    }
+  }
+
+  /**
+     * @author Enrico Acquaviva
+     */
+  public getCourses(){
+    return this.courses;
+  }
 
   public isValid(): boolean {
     return this.isValidAccount;
@@ -40,6 +79,7 @@ export class Student {
   public setValid(isValid: boolean): void {
     this.isValidAccount = isValid;
   }
+  
 
   //#endregion
 
