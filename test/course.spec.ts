@@ -36,27 +36,7 @@ describe('CourseService', () => {
      */
   describe('ao listar os cursos da assinatura', () => {
     it('deve retornar cursos de acordo com a assinatura do usuário', () => {
-      const student = new Student('Jimmy', PremiumSubscription)
-      const dataStore = new DataStore();
-      dataStore.students.push(student);
-      let cursosTotal;
-      let i=0;
-      for (i; i<4;i++){
-        const curso = new Course(`Curso${i}`, PremiumSubscription);
-        cursosTotal = cursosTotal + curso;
-        dataStore.courses.push(curso);
-        student.setCourse(curso);
-      } 
-      //caso seja premium
-      const apenasCursosPremiumDoUsuario = student.getCourses(); 
-      expect(apenasCursosPremiumDoUsuario).toEqual(cursosTotal);   
-
-      i=0;
-      for (i; i<4;i++){
-        const curso = new Course(`Curso${i}`, BasicSubscription);
-        dataStore.courses.push(curso);
-        student.setCourse(curso);
-      }     
+      
 
       expect(true).toEqual('not implemented');
     });
@@ -90,12 +70,7 @@ describe('CourseService', () => {
       
       let possuiDozeCursos = studentService.verifyTwelveCourses(student.id);
 
-      if(possuiDozeCursos == true){
-        expect(possuiDozeCursos).toEqual(true);
-      }
-      
-      expect(possuiDozeCursos).toEqual(false);
-      
+      expect(possuiDozeCursos).toEqual(true);     
     });
     
 
