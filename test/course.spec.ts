@@ -70,7 +70,9 @@ describe('CourseService', () => {
       
       let possuiDozeCursos = studentService.verifyTwelveCourses(student.id);
 
-      expect(possuiDozeCursos).toEqual(true);     
+      expect(possuiDozeCursos).toEqual(true);
+      
+      
     });
     
 
