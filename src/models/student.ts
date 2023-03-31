@@ -8,6 +8,7 @@ import { PremiumSubscription, Subscription } from './subscription';
 
 export class Student {
 
+
   //#region Constructor
 
   constructor(
@@ -100,6 +101,22 @@ export class Student {
     return this.courses;
   }
 
+  public getcoinBalance(): number {
+    return this.coins;
+  }
+
   //#endregion
+
+  public addCoins(amount: number): void {
+    this.coins += amount;
+  }
+  public upgradeSubscription(subscription: Subscription): void {
+    this.subscription = subscription;
+
+    // adiciona 3 coins quando o usuário se torna premium
+    if (subscription === PremiumSubscription) {
+      this.addCoins(3);
+    }
+  }
 
 }
