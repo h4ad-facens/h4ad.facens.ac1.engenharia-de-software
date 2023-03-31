@@ -12,6 +12,7 @@ export class Course {
   constructor(
     public name: string,
     public subscription: Subscription | null,
+    public price : number = 0,
   ) { }
 
   //#endregion
