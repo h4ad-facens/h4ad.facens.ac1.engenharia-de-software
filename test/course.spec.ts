@@ -1,22 +1,46 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable node/no-missing-import */
 import { Course } from '../src/models/course';
 import { DataStore } from '../src/data/data.store';
 import { Student } from '../src/models/student';
-import { BasicSubscription, PremiumSubscription } from '../src/models/subscription';
+import { BasicSubscription } from '../src/models/subscription';
 import { StudentService } from '../src/services/student.service';
-import { isSet } from 'util/types';
+import { CourseService } from '../src/services/course.service';
 
 describe('CourseService', () => {
   describe('ao comprar um curso com moedas', () => {
+    /**
+     * Gabrielle
+     */
     it('deve subtrair as moedas do usuário', () => {
-      expect(true).toEqual('not implemented');
+      const student = new Student('Vinícius Lourenço', BasicSubscription);
+      const course = new Course('Curso #1', null, 3);
+      const dataStore = new DataStore();
+      dataStore.students.push(student);
+      student.addCoins(4);
+
+      const courseService = new CourseService(dataStore);
+
+      const courseBought = courseService.buyCourse(student.id, course.id);
+
+      expect(courseBought.id).toEqual(course.id);
+      expect(student.getCoins()).toEqual(1);
     });
 
+    /**
+     * Gabrielle
+     */
     it('deve lançar um erro caso o usuário não tenha a quantidade de moedas necessárias', () => {
-      expect(true).toEqual('not implemented');
-    });
+      const student = new Student('Vinícius Lourenço', BasicSubscription);
+      const course = new Course('Curso #1', null, 3);
+      const dataStore = new DataStore();
+      dataStore.students.push(student);
+      student.addCoins(2);
 
-    it('deve lançar um erro caso o usuário já possua o curso', () => {
-      expect(true).toEqual('not implemented');
+      const courseService = new CourseService(dataStore);
+
+      expect(() => courseService.buyCourse(student.id, course.id)).toThrowError();
     });
   });
 
@@ -68,11 +92,9 @@ describe('CourseService', () => {
       } 
       const studentService = new StudentService(dataStore);
       
-      let possuiDozeCursos = studentService.verifyTwelveCourses(student.id);
+      const possuiDozeCursos = studentService.verifyTwelveCourses(student.id);
 
       expect(possuiDozeCursos).toEqual(true);
-      
-      
     });
     
 

@@ -75,11 +75,30 @@ export class Student {
   public getCoins(): number {
     return this.coins;
   }
+  
+  public addCoins(value: number): number{
+    this.coins = this.coins + value;   
+    return this.coins;
+  }
+  
+  public removeCoins(value: number): number{
+    this.coins = this.coins - value;   
+    return this.coins;
+  }
+
 
   public setValid(isValid: boolean): void {
     this.isValidAccount = isValid;
   }
   
+
+  public addCourse(course: Course): void {
+    this.courses.push(course);
+  }
+
+  public getCourses(): Course[] {
+    return this.courses;
+  }
 
   //#endregion
 
