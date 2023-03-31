@@ -1,6 +1,8 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable node/no-missing-import */
 //#region Imports
 
-import { Student } from '../src/models/student';
+import { Student } from '../models/student';
 import { BasicSubscription, PremiumSubscription } from '../models/subscription';
 import { DataStore } from '../data/data.store';
 
