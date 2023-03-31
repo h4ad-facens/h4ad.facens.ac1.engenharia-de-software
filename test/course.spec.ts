@@ -90,9 +90,7 @@ describe('CourseService', () => {
       
       let possuiDozeCursos = studentService.verifyTwelveCourses(student.id);
 
-      if(possuiDozeCursos == true){
-        expect(possuiDozeCursos).toEqual(true);
-      }
+      expect(possuiDozeCursos).toEqual(true);
       
       expect(possuiDozeCursos).toEqual(false);
       
