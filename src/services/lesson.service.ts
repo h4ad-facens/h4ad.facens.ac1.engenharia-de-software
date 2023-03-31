@@ -9,6 +9,9 @@ import { DataStore } from '../data/data.store';
 //#endregion
 
 export class LessonService {
+  addCoinsToStudent(student: Student, arg1: number) {
+    throw new Error("Method not implemented.");
+  }
 
   //#region Constructor
 
