@@ -8,10 +8,10 @@ import { LessonService } from "../src/services/lesson.service";
 
 describe('LessonService', () => {
   describe('ao visualizar uma aula', () => {
-    it('deve ser possível visualizar o conteúdo', () => {
     /**
-     * @author Thiago Gomes
-     */
+    * @author Thiago Gomes
+    */
+    it('deve ser possível visualizar o conteúdo', () => {
 
       const student = new Student('José Pilintra', BasicSubscription);
       const dataStore = new DataStore();
@@ -28,11 +28,12 @@ describe('LessonService', () => {
       expect(lessonService.getContentByStoreId(student, lesson.id)).toEqual(lesson.content);
     });
 
-    it('deve lançar um erro caso o usuário não possua uma conta', () => {
 
-          /**
+    /**
      * @author Thiago Gomes
      */
+
+    it('deve lançar um erro caso o usuário não possua uma conta', () => {
 
       const dataStore = new DataStore();
 
@@ -50,13 +51,10 @@ describe('LessonService', () => {
 
       expect(() => lessonService.getContentByStoreId(student, lesson.id)).toThrowError('O usuário não existe.');
     });
-
-    it('deve lançar um erro caso o usuário não possua o curso', () => {
-
-          /**
+    /**
      * @author Thiago Gomes
      */
-
+    it('deve lançar um erro caso o usuário não possua uma subscrição válida para o conteúdo', () => {
 
       const student = new Student('José Pilintra', BasicSubscription);
       const dataStore = new DataStore();
