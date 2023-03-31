@@ -28,6 +28,10 @@ export class StudentService {
     return student.getCoins();
   }
 
+
+  /**
+     * @author Enrico Acquaviva
+     */
   public verifyTwelveCourses(userId: string){
     const student = this.data.students.find(s => s.id === userId);
     
@@ -44,7 +48,7 @@ export class StudentService {
               throw new Error('O usuário possui cursos inválidos.');
             }
         })
-    student.setsubscription(premium);
+    student.setsubscription('premium');
    }
 
   }

@@ -30,23 +30,38 @@ export class Student {
   //#endregion
 
   //#region Public Methods
+    
 
+    /**
+     * @author Enrico Acquaviva
+     */
     public setsubscription(subscricao: Subscription){
       this.subscription = subscricao;
     }
 
+    /**
+     * @author Enrico Acquaviva
+     */
     public setcompletedCourse(curso:Course){
       this.completedCourses.push(curso);
     }
+    /**
+     * @author Enrico Acquaviva
+     */
     public getcompletedCourse(){
       return this.completedCourses;
     }
 
+  /**
+     * @author Enrico Acquaviva
+     */  
   public setCourse(course:Course){
     this.courses.push(course);
   }
 
-  
+  /**
+     * @author Enrico Acquaviva
+     */
   public getCourses(){
     return this.courses;
   }
