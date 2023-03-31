@@ -25,17 +25,30 @@ export class Student {
   protected coins: number = 0;
   protected isValidAccount: boolean = true;
 
+  public completedCourses: Course[] = [];
+
   //#endregion
 
   //#region Public Methods
 
-  public setCourse(course){
-    this.courses[course];
+    public setsubscription(subscricao: Subscription){
+      this.subscription = subscricao;
+    }
+
+    public setcompletedCourse(curso:Course){
+      this.completedCourses.push(curso);
+    }
+    public getcompletedCourse(){
+      return this.completedCourses;
+    }
+
+  public setCourse(course:Course){
+    this.courses.push(course);
   }
 
   
-  public getCourses(index){
-    return this.courses[index];
+  public getCourses(){
+    return this.courses;
   }
 
   public isValid(): boolean {

@@ -52,23 +52,18 @@ describe('CourseService', () => {
      */
     it('ao finalizar o 12 curso, se sim, transformar o usuário em premium', () => {
       const student = new Student('Enrico', BasicSubscription);
-      const curso = new Course('Curso1', null);
-      const curso2 = new Course('Curso2', null);
       const dataStore = new DataStore();
       dataStore.students.push(student);
-      dataStore.courses.push(curso);
-      student.setCourse(curso);
-      student.setCourse(curso2);
-      const studentService = new StudentService(dataStore);
-      let cursosEstudante; 
-      let tamanho = 0;
       let i=0;
-    for (i; i<12;i++){
-        cursosEstudante = student.getCourses(i);
-        if(cursosEstudante != null){
-            tamanho += 1;
-        }
-    } 
+      for (i; i<12;i++){
+        const curso = new Course(`Curso${i}`, null);
+        dataStore.courses.push(curso);
+        student.setcompletedCourse(curso);
+      } 
+      const studentService = new StudentService(dataStore);
+      
+      
+    
       expect(tamanho).toBe(12);
     });
     
