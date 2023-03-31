@@ -2,7 +2,7 @@
 
 import { v4 } from 'uuid';
 import { Course } from './course';
-import { Subscription } from './subscription';
+import { PremiumSubscription, Subscription } from './subscription';
 
 //#endregion
 
@@ -56,7 +56,9 @@ export class Student {
      * @author Enrico Acquaviva
      */  
   public setCourse(course:Course){
-    this.courses.push(course);
+    if(this.subscription == course.subscription || this.subscription == PremiumSubscription){
+        this.courses.push(course);
+    }
   }
 
   /**

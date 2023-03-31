@@ -1,7 +1,7 @@
 import { Course } from '../src/models/course';
 import { DataStore } from '../src/data/data.store';
 import { Student } from '../src/models/student';
-import { BasicSubscription } from '../src/models/subscription';
+import { BasicSubscription, PremiumSubscription } from '../src/models/subscription';
 import { StudentService } from '../src/services/student.service';
 import { isSet } from 'util/types';
 
@@ -30,8 +30,34 @@ describe('CourseService', () => {
     });
   });
 
+
+   /**
+     * @author Enrico Acquaviva
+     */
   describe('ao listar os cursos da assinatura', () => {
     it('deve retornar cursos de acordo com a assinatura do usuário', () => {
+      const student = new Student('Jimmy', PremiumSubscription)
+      const dataStore = new DataStore();
+      dataStore.students.push(student);
+      let cursosTotal;
+      let i=0;
+      for (i; i<4;i++){
+        const curso = new Course(`Curso${i}`, PremiumSubscription);
+        cursosTotal = cursosTotal + curso;
+        dataStore.courses.push(curso);
+        student.setCourse(curso);
+      } 
+      //caso seja premium
+      const apenasCursosPremiumDoUsuario = student.getCourses(); 
+      expect(apenasCursosPremiumDoUsuario).toEqual(cursosTotal);   
+
+      i=0;
+      for (i; i<4;i++){
+        const curso = new Course(`Curso${i}`, BasicSubscription);
+        dataStore.courses.push(curso);
+        student.setCourse(curso);
+      }     
+
       expect(true).toEqual('not implemented');
     });
 
