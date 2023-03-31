@@ -92,7 +92,6 @@ describe('CourseService', () => {
 
       expect(possuiDozeCursos).toEqual(true);
       
-      expect(possuiDozeCursos).toEqual(false);
       
     });
     
