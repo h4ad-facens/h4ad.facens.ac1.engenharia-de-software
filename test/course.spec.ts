@@ -62,9 +62,14 @@ describe('CourseService', () => {
       } 
       const studentService = new StudentService(dataStore);
       
+      let possuiDozeCursos = studentService.verifyTwelveCourses(student.id);
+
+      if(possuiDozeCursos == true){
+        expect(possuiDozeCursos).toEqual(true);
+      }
       
-    
-      expect(tamanho).toBe(12);
+      expect(possuiDozeCursos).toEqual(false);
+      
     });
     
 

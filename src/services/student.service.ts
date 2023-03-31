@@ -1,5 +1,6 @@
 //#region Imports
 
+import { PremiumSubscription } from 'src/models/subscription';
 import { DataStore } from '../data/data.store';
 
 //#endregion
@@ -48,9 +49,10 @@ export class StudentService {
               throw new Error('O usuário possui cursos inválidos.');
             }
         })
-    student.setsubscription('premium');
+    student.setsubscription(PremiumSubscription);
+    return true;
    }
-
+   return false;
   }
 
   //#endregion
