@@ -4,7 +4,7 @@
 import { Course } from '../src/models/course';
 import { DataStore } from '../src/data/data.store';
 import { Student } from '../src/models/student';
-import { BasicSubscription } from '../src/models/subscription';
+import { BasicSubscription, PremiumSubscription } from '../src/models/subscription';
 import { StudentService } from '../src/services/student.service';
 import { CourseService } from '../src/services/course.service';
 
@@ -62,8 +62,6 @@ describe('CourseService', () => {
      */
   describe('ao listar os cursos da assinatura', () => {
     it('deve retornar cursos de acordo com a assinatura do usuário', () => {
-
-
       expect(true).toEqual('not implemented');
     });
 
@@ -92,13 +90,12 @@ describe('CourseService', () => {
         dataStore.courses.push(curso);
         student.setcompletedCourse(curso);
       }
+
       const studentService = new StudentService(dataStore);
-
       const possuiDozeCursos = studentService.verifyTwelveCourses(student.id);
-
       expect(possuiDozeCursos).toEqual(true);
+      expect(student.subscription).toBe(PremiumSubscription);
     });
-
 
     it('se certificar que o usuário recebeu as 3 moedas', () => {
       expect(true).toEqual('not implemented');
