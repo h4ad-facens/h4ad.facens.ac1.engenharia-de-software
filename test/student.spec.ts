@@ -51,7 +51,6 @@ describe('StudentService', () => {
       student = new Student('Lucas', BasicSubscription);
     });
 
-
     /**
      * @author Lucas da Costa
      */

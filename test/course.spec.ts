@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { DataStore } from '../src/data/data.store';
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable node/no-missing-import */
 import { Course } from '../src/models/course';
-import { DataStore } from '../src/data/data.store';
 import { Student } from '../src/models/student';
 import { BasicSubscription, PremiumSubscription } from '../src/models/subscription';
-import { StudentService } from '../src/services/student.service';
 import { CourseService } from '../src/services/course.service';
+import { StudentService } from '../src/services/student.service';
 
 describe('CourseService', () => {
   describe('ao comprar um curso com moedas', () => {
@@ -46,37 +46,7 @@ describe('CourseService', () => {
     });
   });
 
-  describe('ao listar os cursos que o usuário comprou', () => {
-    it('deve retornar apenas os que ele realmente comprou', () => {
-      expect(true).toEqual('not implemented');
-    });
-
-    it('deve lançar um erro caso o usuário não possua uma conta', () => {
-      expect(true).toEqual('not implemented');
-    });
-  });
-
-
-   /**
-     * @author Enrico Acquaviva
-     */
-  describe('ao listar os cursos da assinatura', () => {
-    it('deve retornar cursos de acordo com a assinatura do usuário', () => {
-      expect(true).toEqual('not implemented');
-    });
-
-    it('deve lançar um erro caso o usuário não possua uma conta', () => {
-      expect(true).toEqual('not implemented');
-    });
-  });
-
   describe('quando um usuário finalizar um curso', () => {
-    it('retornar uma mensagem de sucesso', () => {
-      expect(true).toEqual('not implemented');
-    });
-
-
-
     /**
      * @author Enrico Acquaviva
      */
@@ -84,9 +54,9 @@ describe('CourseService', () => {
       const student = new Student('Enrico', BasicSubscription);
       const dataStore = new DataStore();
       dataStore.students.push(student);
-      let i=0;
-      for (i; i<12;i++){
-        const curso = new Course(`Curso${i}`, null);
+      let i = 0;
+      for (i; i < 12; i++) {
+        const curso = new Course(`Curso${ i }`, null);
         dataStore.courses.push(curso);
         student.setcompletedCourse(curso);
       }
@@ -95,10 +65,6 @@ describe('CourseService', () => {
       const possuiDozeCursos = studentService.verifyTwelveCourses(student.id);
       expect(possuiDozeCursos).toEqual(true);
       expect(student.subscription).toBe(PremiumSubscription);
-    });
-
-    it('se certificar que o usuário recebeu as 3 moedas', () => {
-      expect(true).toEqual('not implemented');
     });
   });
 });
