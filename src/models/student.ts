@@ -22,7 +22,7 @@ export class Student {
 
   public readonly id: string = v4();
 
-  protected readonly courses: Course[] = [];
+  protected courses: Course[] = [];
   protected coins: number = 0;
   protected isValidAccount: boolean = true;
 
@@ -69,6 +69,15 @@ export class Student {
     return this.courses;
   }
 
+  public setCourse(course,subscription){
+    this.courses.push(course);
+  }
+
+
+  public getCourses(){
+    return this.courses;
+  }
+
   public isValid(): boolean {
     return this.isValidAccount;
   }
@@ -105,6 +114,9 @@ export class Student {
     return this.coins;
   }
 
+  public getSubscription(): Subscription{
+    return this.subscription;
+  }
   //#endregion
 
   public addCoins(amount: number): void {

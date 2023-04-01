@@ -18,6 +18,7 @@ describe('CourseService', () => {
       const course = new Course('Curso #1', null, 3);
       const dataStore = new DataStore();
       dataStore.students.push(student);
+      dataStore.courses.push(course);
       student.addCoins(4);
 
       const courseService = new CourseService(dataStore);
@@ -36,6 +37,7 @@ describe('CourseService', () => {
       const course = new Course('Curso #1', null, 3);
       const dataStore = new DataStore();
       dataStore.students.push(student);
+      dataStore.courses.push(course);
       student.addCoins(2);
 
       const courseService = new CourseService(dataStore);
@@ -60,7 +62,7 @@ describe('CourseService', () => {
      */
   describe('ao listar os cursos da assinatura', () => {
     it('deve retornar cursos de acordo com a assinatura do usuário', () => {
-      
+
 
       expect(true).toEqual('not implemented');
     });
@@ -89,14 +91,14 @@ describe('CourseService', () => {
         const curso = new Course(`Curso${i}`, null);
         dataStore.courses.push(curso);
         student.setcompletedCourse(curso);
-      } 
+      }
       const studentService = new StudentService(dataStore);
-      
+
       const possuiDozeCursos = studentService.verifyTwelveCourses(student.id);
 
       expect(possuiDozeCursos).toEqual(true);
     });
-    
+
 
     it('se certificar que o usuário recebeu as 3 moedas', () => {
       expect(true).toEqual('not implemented');

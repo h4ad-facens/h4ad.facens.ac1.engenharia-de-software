@@ -9,7 +9,7 @@ export class Subscription {
   //#region Constructor
 
   constructor(
-    public type: 'basic' | 'premium',
+    public readonly type: 'basic' | 'premium' | 'undefined',
   ) { }
 
   //#endregion
@@ -24,3 +24,4 @@ export class Subscription {
 
 export const BasicSubscription = new Subscription('basic');
 export const PremiumSubscription = new Subscription('premium');
+export const NoSubscription = new Subscription('undefined');
