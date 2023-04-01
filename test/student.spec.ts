@@ -87,14 +87,13 @@ describe('StudentService', () => {
       const course1 = new Course('Java', BasicSubscription);
       const course2 = new Course('Python', BasicSubscription);
       const dataStore = new DataStore();
-      const studentService = new StudentService(dataStore);
 
-      const courses = student.getCourses;
-      student.setCourse(course1, student.subscription);
-      student.setCourse(course2, student.subscription);
+      const courses = student.getCourses();
+      student.setCourse(course1);
+      student.setCourse(course2);
       dataStore.students.push(student);
 
-      expect(courses).toEqual(student.getCourses);
+      expect(courses).toEqual(student.getCourses());
     });
 
     it('lançar um erro caso o usuário não possua uma assinatura', () => {

@@ -31,51 +31,33 @@ export class Student {
   //#endregion
 
   //#region Public Methods
-    
 
-    /**
-     * @author Enrico Acquaviva
-     */
-    public setsubscription(subscricao: Subscription){
-      this.subscription = subscricao;
-    }
-
-    /**
-     * @author Enrico Acquaviva
-     */
-    public setcompletedCourse(curso:Course){
-      this.completedCourses.push(curso);
-    }
-    /**
-     * @author Enrico Acquaviva
-     */
-    public getcompletedCourse(){
-      return this.completedCourses;
-    }
 
   /**
-     * @author Enrico Acquaviva
-     */  
-  public setCourse(course:Course){
-    if(this.subscription == course.subscription || this.subscription == PremiumSubscription){
-        this.courses.push(course);
-    }
+   * @author Enrico Acquaviva
+   */
+  public setsubscription(subscricao: Subscription) {
+    this.subscription = subscricao;
   }
 
   /**
-     * @author Enrico Acquaviva
-     */
-  public getCourses(){
-    return this.courses;
+   * @author Enrico Acquaviva
+   */
+  public setcompletedCourse(curso: Course) {
+    this.completedCourses.push(curso);
   }
 
-  public setCourse(course,subscription){
-    this.courses.push(course);
+  /**
+   * @author Enrico Acquaviva
+   */
+  public getcompletedCourse() {
+    return this.completedCourses;
   }
 
-
-  public getCourses(){
-    return this.courses;
+  public setCourse(course: Course) {
+    if (this.subscription == course.subscription || this.subscription == PremiumSubscription) {
+      this.courses.push(course);
+    }
   }
 
   public isValid(): boolean {
@@ -85,14 +67,14 @@ export class Student {
   public getCoins(): number {
     return this.coins;
   }
-  
-  public addCoins(value: number): number{
-    this.coins = this.coins + value;   
+
+  public addCoins(value: number): number {
+    this.coins = this.coins + value;
     return this.coins;
   }
-  
-  public removeCoins(value: number): number{
-    this.coins = this.coins - value;   
+
+  public removeCoins(value: number): number {
+    this.coins = this.coins - value;
     return this.coins;
   }
 
@@ -100,7 +82,7 @@ export class Student {
   public setValid(isValid: boolean): void {
     this.isValidAccount = isValid;
   }
-  
+
 
   public addCourse(course: Course): void {
     this.courses.push(course);
@@ -114,14 +96,12 @@ export class Student {
     return this.coins;
   }
 
-  public getSubscription(): Subscription{
+  public getSubscription(): Subscription {
     return this.subscription;
   }
+
   //#endregion
 
-  public addCoins(amount: number): void {
-    this.coins += amount;
-  }
   public upgradeSubscription(subscription: Subscription): void {
     this.subscription = subscription;
 
