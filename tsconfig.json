@@ -18,7 +18,10 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "types": [
+      "@cloudflare/workers-types"
+    ]
   },
   "include": [
     "src/**/*.ts",

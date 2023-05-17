@@ -1,0 +1,7 @@
+name = "h4ad-facens-ac1-engenharia-de-software"
+compatibility_date = "2023-05-16"
+
+[[ d1_databases ]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "engsoftwarefacens"
+database_id = "0e6f3e2c-4de8-432f-bedf-ed7898fa556e"
