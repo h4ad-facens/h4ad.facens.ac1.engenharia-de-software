@@ -1,23 +1,32 @@
 import { Context, Hono } from "hono";
-import { createCourseService } from "../factories/course.service.factory";
+import { ICreateCourseRepositoryFactory } from "../factories/course.repository.factory";
+import {
+  ICreateCourseServiceFactory
+} from "../factories/course.service.factory";
 import { CourseDTO } from "../models/course.dto";
 import { CreateCourseDTOValidator } from "../models/create-course.dto";
+import { ICreateDatabaseFactory } from "../factories/db.factory";
 
 export class CourseController {
-  constructor(app: Hono) {
+  constructor(
+    app: Hono,
+    protected readonly courseServiceFactory: ICreateCourseServiceFactory,
+    protected readonly courseRepositoryFactory: ICreateCourseRepositoryFactory,
+    protected readonly createDatabaseFactory: ICreateDatabaseFactory,
+  ) {
     app.get("/courses", this.listCourses.bind(this));
     app.post("/courses", this.createCourse.bind(this));
   }
 
   public async listCourses(c: Context): Promise<Response> {
-    const service = createCourseService(c);
+    const service = this.courseServiceFactory(c, this.courseRepositoryFactory, this.createDatabaseFactory);
     const courses = await service.listCourses();
 
     return c.json(courses, 200);
   }
 
   public async createCourse(c: Context): Promise<Response> {
-    const service = createCourseService(c);
+    const service = this.courseServiceFactory(c, this.courseRepositoryFactory, this.createDatabaseFactory);
 
     const body = await c.req.json();
     const result = await CreateCourseDTOValidator.safeParseAsync(body);

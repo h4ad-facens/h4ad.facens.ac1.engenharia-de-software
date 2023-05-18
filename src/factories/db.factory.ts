@@ -7,3 +7,5 @@ export function createDatabase(database: D1Database): Kysely<Database> {
     dialect: new D1Dialect({ database }),
   });
 }
+
+export type ICreateDatabaseFactory = typeof createDatabase;

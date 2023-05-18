@@ -38,6 +38,7 @@
   "bugs": "https://github.com/h4ad-facens/h4ad.facens.ac1.engenharia-de-software/issues",
   "types": "dist/index.d.ts",
   "dependencies": {
+    "@golevelup/ts-jest": "^0.3.7",
     "hono": "^3.1.8",
     "kysely": "^0.24.2",
     "kysely-d1": "^0.3.0",
