@@ -1,51 +1,33 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable node/no-missing-import */
 //#region Imports
 
-import { error } from 'console';
-import { DataStore } from '../data/data.store';
-import { Course } from '../models/course';
-import { Student } from '../models/student';
+import { uid } from "uid";
+import { Course } from "../entities/course";
+import { CreateCourseDTO } from "../models/create-course.dto";
+import { ICourseRepository } from "../repositories/course.repository.interface";
+import { ICourseService } from "./course.service.interface";
 
 //#endregion
 
-export class CourseService {
-
+export class CourseService implements ICourseService {
   //#region Constructor
 
-  constructor(
-    protected readonly data: DataStore,
-
-  ) { }
+  constructor(protected readonly repository: ICourseRepository) {}
 
   //#endregion
 
   //#region Public Methods
 
-  public buyCourse(studentId: string, courseId: string): Course {
-    const student = this.data.students.find(s => s.id === studentId);
-    const course = this.data.courses.find(c => c.id === courseId);
+  public async createCourse(dto: CreateCourseDTO): Promise<Course> {
+    const course = new Course(uid(), dto.name, dto.price);
 
-    if (!student)
-      throw new Error('O usuário não existe.');
-
-    if (!course)
-      throw new Error('O curso não existe.');
-
-    if (!student.isValid())
-      throw new Error('Compra de curso efetuada');
-
-    const coins = student.getCoins();
-
-    if (course.price > coins)
-      throw new Error('Você não possui moedas suficientes');
-
-    student.removeCoins(course.price);
-    student.addCourse(course);
+    await this.repository.insertCourse(course);
 
     return course;
   }
 
-  //#endregion
+  public async listCourses(): Promise<Course[]> {
+    return this.repository.listCourses();
+  }
 
+  //#endregion
 }
