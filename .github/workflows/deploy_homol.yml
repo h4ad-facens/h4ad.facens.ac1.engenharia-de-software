@@ -15,18 +15,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Use Node.js $18.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
-
-      - name: Install Lib Dependencies
-        run: npm ci
-
-      - uses: actions/checkout@v2
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
         with:
+          preCommands: npm ci
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           command: publish --env homol
