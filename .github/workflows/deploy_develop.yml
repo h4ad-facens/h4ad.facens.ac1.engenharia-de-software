@@ -13,6 +13,9 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     name: Deploy
+    environment:
+      name: dev
+      url: https://engenharia-de-software-dev.h4ad.workers.dev
     steps:
       - uses: actions/checkout@v3
 
