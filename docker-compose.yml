@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    container_name: hono_bun_api
+    environment:
+      PORT: 3000
+      DB_HOST: postgres
+      DB_NAME: dev
+      DB_USER: root
+      DB_PASSWORD: 123456
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: dev
+    volumes:
+      - ./pg_schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    ports:
+      - 5432:5432

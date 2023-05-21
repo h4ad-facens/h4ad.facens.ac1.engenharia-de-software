@@ -1,7 +1,21 @@
-name = "h4ad-facens-ac1-engenharia-de-software"
+name = "engenharia-de-software"
 compatibility_date = "2023-05-16"
 
-[[ d1_databases ]]
-binding = "DB" # i.e. available in your Worker on env.DB
-database_name = "engsoftwarefacens"
-database_id = "0e6f3e2c-4de8-432f-bedf-ed7898fa556e"
+main="src/infra/cloudflare.ts"
+workers_dev = true
+
+d1_databases = [
+    { binding = "DB", database_name = "engsoftwarefacens-dev", database_id = "3c7c9769-4e0b-4a91-b495-1f9385606126" },
+]
+
+[env.homol]
+workers_dev = true
+d1_databases = [
+    { binding = "DB", database_name = "engsoftwarefacens-homol", database_id = "1eb3c0b8-8e03-48d5-a39a-d14c7b9d349a" },
+]
+
+[env.dev]
+workers_dev = true
+d1_databases = [
+    { binding = "DB", database_name = "engsoftwarefacens", database_id = "0e6f3e2c-4de8-432f-bedf-ed7898fa556e" },
+]

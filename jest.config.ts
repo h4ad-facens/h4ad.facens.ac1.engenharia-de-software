@@ -18,6 +18,13 @@ const config: Config = {
     'src/**/*.(t|j)s',
     'libs/**/*.(t|j)s',
   ],
+  coverageReporters: [
+    'html',
+    'json-summary',
+    'text',
+    'text-summary'
+  ],
+  reporters: ['default', ['jest-junit', { outputDirectory: 'coverage' }]],
   coverageDirectory: './coverage',
   testEnvironment: 'node',
   roots: [
