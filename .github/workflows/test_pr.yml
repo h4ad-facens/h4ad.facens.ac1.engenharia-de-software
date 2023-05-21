@@ -5,6 +5,7 @@ on:
 
 jobs:
   coverage:
+    permissions: write-all
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +23,7 @@ jobs:
         run: npm run build --if-present
 
       - name: Run tests with Coverage
-        run: npm test:cov | tee ./coverage/coverage.txt
+        run: npm run test:cov | tee ./coverage.txt
 
       - name: Jest Coverage Comment
         uses: MishaKav/jest-coverage-comment@main
@@ -37,7 +38,7 @@ jobs:
           junitxml-title: JUnit
           junitxml-path: ./coverage/junit.xml
           coverage-title: Coverage
-          coverage-path: ./coverage/coverage.txt
+          coverage-path: ./coverage.txt
 
       - name: Check the output coverage
         run: |
