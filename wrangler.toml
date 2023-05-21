@@ -1,7 +1,7 @@
 name = "engenharia-de-software"
 compatibility_date = "2023-05-16"
 
-main="src/index.ts"
+main="src/infra/cloudflare.ts"
 workers_dev = true
 
 d1_databases = [

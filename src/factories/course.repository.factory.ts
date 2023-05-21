@@ -7,7 +7,7 @@ export function createCourseRepository(
   context: Context,
   createDatabaseFactory: ICreateDatabaseFactory
 ): ICourseRepository {
-  return new CourseRepository(createDatabaseFactory(context.env.DB));
+  return new CourseRepository(createDatabaseFactory(context));
 }
 
 export type ICreateCourseRepositoryFactory = typeof createCourseRepository;

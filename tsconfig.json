@@ -20,6 +20,7 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "types": [
+      "@types/node",
       "@cloudflare/workers-types"
     ]
   },
