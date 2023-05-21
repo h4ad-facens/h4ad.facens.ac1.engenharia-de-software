@@ -1,0 +1,63 @@
+name: Test Pull Request
+
+on:
+  pull_request:
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js $18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Install Lib Dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build --if-present
+
+      - name: Run tests with Coverage
+        run: npm test:cov | tee ./coverage/coverage.txt
+
+      - name: Jest Coverage Comment
+        uses: MishaKav/jest-coverage-comment@main
+        with:
+          coverage-summary-path: ./coverage/coverage-summary.json
+          title: Engenharia de Software
+          summary-title: Summary
+          badge-title: Coverage
+          hide-comment: false
+          create-new-comment: false
+          hide-summary: false
+          junitxml-title: JUnit
+          junitxml-path: ./coverage/junit.xml
+          coverage-title: Coverage
+          coverage-path: ./coverage/coverage.txt
+
+      - name: Check the output coverage
+        run: |
+          echo "Summary Report"
+          echo "Coverage Percentage - ${{ steps.coverageComment.outputs.coverage }}"
+          echo "Coverage Color - ${{ steps.coverageComment.outputs.color }}"
+          echo "Summary Html - ${{ steps.coverageComment.outputs.summaryHtml }}"
+
+          echo "JUnit Report"
+          echo "tests - ${{ steps.coverageComment.outputs.tests }}"
+          echo "skipped - ${{ steps.coverageComment.outputs.skipped }}"
+          echo "failures - ${{ steps.coverageComment.outputs.failures }}"
+          echo "errors - ${{ steps.coverageComment.outputs.errors }}"
+          echo "time - ${{ steps.coverageComment.outputs.time }}"
+
+          echo "Coverage Report"
+          echo "lines - ${{ steps.coverageComment.outputs.lines }}"
+          echo "branches - ${{ steps.coverageComment.outputs.branches }}"
+          echo "functions - ${{ steps.coverageComment.outputs.functions }}"
+          echo "statements - ${{ steps.coverageComment.outputs.statements }}"
+          echo "coverage - ${{ steps.coverageComment.outputs.coverage }}"
+          echo "color - ${{ steps.coverageComment.outputs.color }}"
+          echo "Coverage Html - ${{ steps.coverageComment.outputs.coverageHtml }}"

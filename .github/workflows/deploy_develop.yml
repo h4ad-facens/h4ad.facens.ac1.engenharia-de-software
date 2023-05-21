@@ -1,0 +1,21 @@
+name: Deploy Develop
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - uses: actions/checkout@v2
+      - name: Publish
+        uses: cloudflare/wrangler-action@2.0.0
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          command: publish --env dev
