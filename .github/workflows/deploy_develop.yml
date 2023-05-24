@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - develop
+    paths:
+      - 'src/**'
+      - 'test/**'
+      - 'tsconfig.json'
+      - 'package-lock.json'
+      - 'jest.config.ts'
+      - 'wrangler.toml'
 
 jobs:
   test:
