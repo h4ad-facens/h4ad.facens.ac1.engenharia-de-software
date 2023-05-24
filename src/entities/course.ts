@@ -5,7 +5,7 @@ export class Course {
   constructor(
     public id: string,
     public name: string,
-    public price : number = 0,
+    public price : number,
   ) { }
 
   //#endregion
