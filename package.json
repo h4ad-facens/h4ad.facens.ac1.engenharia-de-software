@@ -6,6 +6,7 @@
   "main": "dist/index.js",
   "repository": "https://github.com/h4ad-facens/h4ad.facens.ac1.engenharia-de-software",
   "scripts": {
+    "start": "wrangler dev",
     "build": "tsc -b",
     "lint": "eslint --config .eslintrc .",
     "test": "jest",
